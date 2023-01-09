@@ -1,32 +1,23 @@
-import { Routes, Route } from 'react-router-dom';
-// import { Section } from 'components/Section/Section';
-import { Link } from './App.styled';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { SharedLayout } from 'components/SharedLayout';
 import { Home } from 'pages/Home';
 import { Movies } from 'pages/Movies';
 import { MovieDetails } from 'pages/MovieDetails';
+import { Cast } from 'components/Cast/Cast';
+import { Reviews } from 'components/Reviews/Reviews';
 
 export function App() {
   return (
-    <>
-      <header>
-        <nav>
-          <Link to="/" end>
-            Home
-          </Link>
-          <Link to="/movies">Movies</Link>
-        </nav>
-      </header>
-      <Routes>
-        <Route>
-          <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/movies/:movieId" element={<MovieDetails />}>
-            {/* TODO  Change element accordingly !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/}
-            <Route path="cast" element={<MovieDetails />} />
-            <Route path="rewievs" element={<MovieDetails />} />
-          </Route>
+    <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<Home />} />
+        <Route path="movies" element={<Movies />} />
+        <Route path="movies/:movieId" element={<MovieDetails />}>
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
         </Route>
-      </Routes>
-    </>
+        <Route path="*" element={<Navigate to="/" />} />
+      </Route>
+    </Routes>
   );
 }

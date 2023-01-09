@@ -21,3 +21,24 @@ export async function fetchByQuery(query) {
   );
   return response;
 }
+
+export async function fetchById(id) {
+  const response = await requestWithKey(
+    'https://api.themoviedb.org/3/movie/' + id
+  );
+  return response.data;
+}
+
+export async function fetchCast(id) {
+  const response = await requestWithKey(
+    `https://api.themoviedb.org/3/movie/${id}/credits`
+  );
+  return response.data.cast;
+}
+
+export async function fetchReviews(id) {
+  const response = await requestWithKey(
+    `https://api.themoviedb.org/3/movie/${id}/reviews`
+  );
+  return response.data.results;
+}

@@ -30,7 +30,7 @@ export function MovieDetails() {
       <Section>
         <CardMeta>
           <img
-            alt={movie.tagline}
+            alt={movie.tagline ? movie.tagline : 'movie poster image'}
             src={
               movie.poster_path
                 ? IMG_URL + movie.poster_path
@@ -41,7 +41,11 @@ export function MovieDetails() {
             <h1>{movie.title}</h1>
             <p>User Score: {(movie.vote_average * 10).toFixed(0)}%</p>
             <p>Overview</p>
-            <span>{movie.overview}</span>
+            <span>
+              {movie.overview
+                ? movie.overview
+                : 'Unfortunately there is no overview'}
+            </span>
             <p>Genres</p>
             <span>{movie?.genres?.map(genre => genre.name).join(', ')}</span>
           </div>

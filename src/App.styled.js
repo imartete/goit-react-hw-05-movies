@@ -13,3 +13,16 @@ export const Link = styled(NavLink)`
     background-color: orangered;
   }
 `;
+
+export const Container = styled.div`
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 0 20px;
+`;
+
+export const Section = styled.div`
+  padding: 20px 0;
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+`;

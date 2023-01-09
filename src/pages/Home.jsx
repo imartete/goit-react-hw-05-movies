@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchTrending } from 'utils/api';
-import { MovieList } from 'components/MovieList.jsx/MovieList';
+import { MovieList } from 'components/MovieList';
 
 export function Home() {
   const [trending, setTrending] = useState([]);

@@ -3,21 +3,26 @@ import { useSearchParams } from 'react-router-dom';
 import { fetchByQuery } from 'utils/api';
 import { MovieList } from 'components/MovieList';
 import { SearchBox } from 'components/Searchbox';
+import { Loader } from 'components/Loader/Loader';
 
 export function Movies() {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const movieQuery = searchParams.get('query') ?? '';
 
   useEffect(() => {
     async function getMovies() {
       try {
+        setLoading(true);
         if (movieQuery) {
           const response = await fetchByQuery(movieQuery);
           setMovies(response.data.results);
         }
       } catch (error) {
         console.log(error.message);
+      } finally {
+        setLoading(false);
       }
     }
     getMovies();
@@ -34,7 +39,8 @@ export function Movies() {
   return (
     <main>
       <SearchBox onSubmit={getValue} />
-      <MovieList movies={movies} />
+      {loading && <Loader />}
+      {movies && !loading && <MovieList movies={movies} />}
     </main>
   );
 }

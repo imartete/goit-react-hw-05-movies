@@ -22,19 +22,23 @@ export function Cast() {
   return (
     <Section>
       <h3>Cast</h3>
-      <List>
-        {cast.map(castItem => (
-          <ListItem key={castItem.id}>
-            <img
-              src={getSrc(castItem.profile_path)}
-              alt={castItem.name}
-              width={'180px'}
-            ></img>
-            <p>{castItem.name}</p>
-            <p>Character: {castItem.character}</p>
-          </ListItem>
-        ))}
-      </List>
+      {cast.length ? (
+        <List>
+          {cast.map(castItem => (
+            <ListItem key={castItem.id}>
+              <img
+                src={getSrc(castItem.profile_path)}
+                alt={castItem.name}
+                width={'180px'}
+              ></img>
+              <p>{castItem.name}</p>
+              <p>Character: {castItem.character}</p>
+            </ListItem>
+          ))}
+        </List>
+      ) : (
+        <p>Unfortunately we don not have cast for this movie</p>
+      )}
     </Section>
   );
 }

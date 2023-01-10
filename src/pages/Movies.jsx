@@ -41,6 +41,7 @@ export function Movies() {
       <SearchBox onSubmit={getValue} />
       {loading && <Loader />}
       {movies && !loading && <MovieList movies={movies} />}
+      {!movies.length && movieQuery && <p>No results</p>}
     </main>
   );
 }

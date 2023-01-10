@@ -1,9 +1,7 @@
-import { fetchCast } from 'utils/api';
+import { fetchCast, getSrc } from 'utils/api';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Section, List, ListItem } from 'App.styled';
-
-const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
 export function Cast() {
   const [cast, setCast] = useState([]);
@@ -28,11 +26,7 @@ export function Cast() {
         {cast.map(castItem => (
           <ListItem key={castItem.id}>
             <img
-              src={
-                castItem.profile_path
-                  ? IMG_URL + castItem.profile_path
-                  : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/495px-No-Image-Placeholder.svg.png?20200912122019'
-              }
+              src={getSrc(castItem.profile_path)}
               alt={castItem.name}
               width={'180px'}
             ></img>

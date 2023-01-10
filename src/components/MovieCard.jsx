@@ -1,4 +1,5 @@
 import { CardMeta } from 'App.styled';
+import PropTypes from 'prop-types';
 
 export function MovieCard({ movie }) {
   const { tagline, title, overview, vote_average, genres, poster_path } = movie;
@@ -16,3 +17,14 @@ export function MovieCard({ movie }) {
     </CardMeta>
   );
 }
+
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    tagline: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    overview: PropTypes.string.isRequired,
+    vote_average: PropTypes.string.isRequired,
+    genres: PropTypes.string.isRequired,
+    poster_path: PropTypes.string.isRequired,
+  }).isRequired,
+};

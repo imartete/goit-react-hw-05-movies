@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { HeaderLink, Container, Section } from 'App.styled';
 
-export const SharedLayout = () => {
+export function SharedLayout() {
   return (
     <Container>
       <Section>
@@ -17,4 +17,4 @@ export const SharedLayout = () => {
       <Outlet />
     </Container>
   );
-};
+}
